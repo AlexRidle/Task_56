@@ -37,9 +37,15 @@ public class Main {
         for(int i = 0; i < youreInTheFriendlistCount; i++){
             usersWhoAddedYou.add(inputFile.next());
         }
+        checkInputFile(yourFriendlistCount, youreInTheFriendlistCount);
         Collections.sort(yourFriends);
         Collections.sort(usersWhoAddedYou);
-        if (!(0 <= yourFriendlistCount || yourFriendlistCount <= 200 || 0 <= youreInTheFriendlistCount || youreInTheFriendlistCount <= 200)) {
+    }
+
+    private static void checkInputFile(int yourFriendlistCount, int youreInTheFriendlistCount) throws TaskException {
+        boolean wrongFriendlist = 0 > yourFriendlistCount || yourFriendlistCount > 200;
+        boolean wrongUserFriendList = 0 > youreInTheFriendlistCount || youreInTheFriendlistCount > 200;
+        if (wrongFriendlist || wrongUserFriendList) {
             throw new TaskException("Please, check INPUT.txt file. Friends cant be less than 0 or higher than 200");
         }
     }
